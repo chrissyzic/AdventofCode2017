@@ -546,4 +546,26 @@ def find_invalid_passphrases(list_of_lists):
 
 blahblah = input_to_phrases(day_four_input)
 blahblahblah = phrases_to_words(blahblah)
-print find_invalid_passphrases(blahblahblah)
+print "First star answer: " + str(find_invalid_passphrases(blahblahblah))
+
+##SECOND STAR
+
+def find_invalid_passphrases_alpha(list_of_lists):
+	invalid_phrases_count = 0
+	total_phrases_count=0
+	for list in list_of_lists:
+		invalid_phrase = False
+		unique_words = []
+		for word in list:
+			word_alpha = sorted(word)
+			if word_alpha in unique_words:
+				if invalid_phrase == False:
+					invalid_phrase = True
+					invalid_phrases_count = invalid_phrases_count +1
+			else:
+				unique_words.append(word_alpha)
+		total_phrases_count = total_phrases_count + 1
+	return total_phrases_count - invalid_phrases_count
+
+print "Second star answer: " + str(find_invalid_passphrases_alpha(blahblahblah))
+
